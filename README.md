@@ -1,6 +1,6 @@
-# PiNest Watcher
+# Pi Watcher
 
-Pi Watcher is a bird nest monitoring system based on Raspberry Pi and a camera. It allows you to observe and capture images from a bird nest using a Raspberry Pi and a connected camera.
+Pi Watcher is a monitoring system based on Pi and a camera. It enables you to observe and capture images using a Pi and a connected camera.
 
 You can install these dependencies using the following command:
 
