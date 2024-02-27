@@ -7,9 +7,16 @@ import cv2
 from flask import Flask, render_template, Response
 
 app = Flask(__name__)
-camera = cv2.VideoCapture(0)  # 0表示调用第一个相机设备，你可以根据需要更改
+
+def get_camera():
+    for i in range(10):  # Try up to 10 devices
+        camera = cv2.VideoCapture(i)
+        if camera.isOpened():
+            return camera
+    raise Exception("Unable to find a connected camera device.")
 
 def generate_frames():
+    camera = get_camera()
     while True:
         success, frame = camera.read()
         if not success:
