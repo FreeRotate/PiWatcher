@@ -17,6 +17,21 @@
 </head>
 <body>
     <h1>Pi Watcher</h1>
+    <p id="current-time">Loading...</p>
     <img src="{{ url_for('video_feed') }}" alt="Pi Watcher">
+
+    <script>
+        const currentTimeElement = document.getElementById("current-time");
+        const eventSource = new EventSource("/time_feed");
+
+        eventSource.onmessage = function(event) {
+            currentTimeElement.textContent = "Current Time: " + event.data;
+        };
+
+        eventSource.onerror = function(error) {
+            console.error("EventSource failed:", error);
+            eventSource.close();
+        };
+    </script>
 </body>
 </html>
